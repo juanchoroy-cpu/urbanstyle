@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101010">
+<title>UrbanStyle | Moda urbana para todos</title>
+<style>
+:root{--black:#101010;--yellow:#e5f522;--white:#fff;--muted:#777;--line:#e8e8e8}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#171717;background:#fff}
+header{background:var(--black);color:#fff;position:sticky;top:0;z-index:5;box-shadow:0 2px 12px #0002}
+.nav{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:16px 22px;gap:18px}
+.logo{font-size:27px;font-weight:900;letter-spacing:-1.5px;color:#fff;text-decoration:none}.logo span{color:var(--yellow)}.tagline{font-size:9px;letter-spacing:3px;display:block;color:#bbb;margin-top:2px}
+nav{display:flex;gap:22px}nav a{color:#fff;text-decoration:none;font-size:14px}nav a:hover{color:var(--yellow)}
+.cart-button{border:1px solid #555;background:#202020;color:#fff;border-radius:30px;padding:10px 14px;cursor:pointer}
+.hero{background:linear-gradient(110deg,#101010 0%,#252525 55%,#111 100%);color:#fff;min-height:330px;display:flex;align-items:center}
+.hero-inner{max-width:1180px;width:100%;margin:auto;padding:50px 24px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:24px}
+.eyebrow{color:var(--yellow);letter-spacing:4px;font-size:12px;font-weight:bold}.hero h1{font-size:clamp(38px,6vw,68px);line-height:.98;margin:15px 0;max-width:650px}.hero p{color:#ccc;font-size:17px;line-height:1.5}.hero-art{border:1px solid #454545;min-height:220px;border-radius:18px;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;background:radial-gradient(circle at center,#3a3a3a,#181818 65%)}.hero-art strong{font-size:clamp(32px,5vw,54px);line-height:1;color:var(--yellow);letter-spacing:-2px}.hero-art small{display:block;color:#ddd;letter-spacing:4px;margin-top:12px}
+.btn{display:inline-block;border:0;background:var(--yellow);color:#111;font-weight:800;text-decoration:none;border-radius:30px;padding:13px 20px;cursor:pointer}.btn:hover{filter:brightness(.94)}
+.wrap{max-width:1180px;margin:auto;padding:34px 22px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:20px}.section-head h2{margin:0;font-size:27px}.section-head p{margin:5px 0 0;color:var(--muted);font-size:14px}
+.categories{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 26px}.filter{background:#f3f3f3;border:1px solid #ddd;padding:10px 16px;border-radius:24px;cursor:pointer}.filter.active,.filter:hover{background:#111;color:#fff;border-color:#111}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.product{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;display:flex;flex-direction:column;min-width:0}
+.product img{width:100%;aspect-ratio:4/4.4;object-fit:cover;background:#eee}
+.product-info{padding:14px;display:flex;flex-direction:column;flex:1}.pill{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#555}.product h3{font-size:16px;margin:8px 0}.desc{font-size:12px;color:#777;line-height:1.4;min-height:30px}.price{font-weight:800;font-size:17px;margin:12px 0}.product .btn{width:100%;margin-top:auto}
+.note{background:#f6f6f6;border-radius:12px;padding:16px;color:#555;font-size:13px;line-height:1.5;margin-top:22px}
+.benefits{background:#101010;color:#fff}.benefits-inner{max-width:1180px;margin:auto;padding:25px 22px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.benefits strong{color:var(--yellow);display:block;margin-bottom:5px}.benefits span{font-size:13px;color:#ccc}
+footer{background:#080808;color:#aaa;padding:24px;text-align:center;font-size:12px;line-height:1.8}footer b{color:#fff}
+.overlay{display:none;position:fixed;inset:0;background:#0008;z-index:9}.overlay.show{display:block}.cart-panel{position:fixed;right:0;top:0;height:100%;width:min(440px,100%);background:#fff;z-index:10;transform:translateX(105%);transition:.25s;padding:22px;display:flex;flex-direction:column;box-shadow:-5px 0 25px #0002}.cart-panel.show{transform:translateX(0)}.cart-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ddd;padding-bottom:12px}.cart-head h2{margin:0}.close{font-size:25px;background:none;border:0;cursor:pointer}.cart-items{overflow:auto;flex:1}.cart-row{padding:14px 0;border-bottom:1px solid #eee;display:grid;grid-template-columns:1fr auto;gap:8px}.cart-row small{color:#777;display:block;margin-top:5px}.qty{display:flex;align-items:center;gap:8px}.qty button{border:1px solid #ddd;background:#f7f7f7;border-radius:6px;padding:4px 9px;cursor:pointer}.cart-total{border-top:1px solid #ddd;padding-top:14px}.cart-total p{display:flex;justify-content:space-between;font-size:19px;font-weight:bold}.cart-total .btn{width:100%;margin-top:6px}.smallprint{font-size:11px;color:#777;line-height:1.4}
+@media(max-width:800px){nav{gap:12px}nav a{font-size:12px}.hero-inner{grid-template-columns:1fr}.hero-art{min-height:130px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.benefits-inner{grid-template-columns:1fr;gap:15px}}
+@media(max-width:500px){.nav{padding:12px 15px}.logo{font-size:22px}nav{display:none}.hero-inner{padding:42px 20px}.wrap{padding:28px 15px}.section-head h2{font-size:23px}.grid{gap:10px}.product-info{padding:10px}.product h3{font-size:14px}.price{font-size:15px}.desc{min-height:0}.btn{padding:11px 12px;font-size:13px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="logo" href="#">Urban<span>Style</span><span class="tagline">MODA URBANA PARA TODOS</span></a>
+    <nav><a href="#">Inicio</a><a href="#tienda">Tienda</a><a href="#tienda" onclick="setCategory('Hombre')">Hombres</a><a href="#tienda" onclick="setCategory('Mujer')">Mujeres</a></nav>
+    <button class="cart-button" onclick="openCart()">🛒 Carrito (<span id="cart-count">0</span>)</button>
+  </div>
+</header>
+<main>
+<section class="hero">
+  <div class="hero-inner">
+    <div><div class="eyebrow">NUEVA TIENDA · NUEVO ESTILO</div><h1>ESTILO EN<br>CADA DETALLE.</h1><p>Ropa urbana, moderna y para ti. Encuentra tu próximo look en UrbanStyle.</p><a class="btn" href="#tienda">VER COLECCIÓN&nbsp; →</a></div>
+    <div class="hero-art"><div><strong>URBAN<br>STYLE.</strong><small>VÍSTETE A TU MANERA</small></div></div>
+  </div>
+</section>
+<section class="wrap" id="tienda">
+  <div class="section-head"><div><h2>Productos destacados</h2><p>Explora la colección y arma tu pedido.</p></div></div>
+  <div class="categories">
+    <button class="filter active" data-cat="Todos" onclick="setCategory('Todos')">Todo</button>
+    <button class="filter" data-cat="Hombre" onclick="setCategory('Hombre')">Hombre</button>
+    <button class="filter" data-cat="Mujer" onclick="setCategory('Mujer')">Mujer</button>
+    <button class="filter" data-cat="Accesorios" onclick="setCategory('Accesorios')">Accesorios</button>
+  </div>
+  <div class="grid" id="products"></div>
+  <div class="note"><b>Importante:</b> estos son productos de demostración con precios de ejemplo. Antes de publicar, cambia las fotos, los precios y la disponibilidad por los datos reales de tu negocio.</div>
+</section>
+<section class="benefits"><div class="benefits-inner"><div><strong>Calidad y estilo</strong><span>Prendas seleccionadas para tu look.</span></div><div><strong>Envíos por coordinar</strong><span>Confirma el costo y el tiempo antes de pagar.</span></div><div><strong>Atención por WhatsApp</strong><span>Resolvemos tus dudas y confirmamos el pedido.</span></div></div></section>
+</main>
+<footer><b>UrbanStyle</b> · Moda urbana para todos<br>© <span id="year"></span> UrbanStyle. Todos los derechos reservados.<br>Los pedidos se confirman por WhatsApp; los pagos y envíos se acuerdan con la tienda.</footer>
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="cart-panel" id="cart-panel" aria-label="Carrito de compras">
+  <div class="cart-head"><h2>Tu carrito</h2><button class="close" onclick="closeCart()" aria-label="Cerrar">×</button></div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-total"><p><span>Total</span><span id="cart-total">$0</span></p><label for="customer-name">Tu nombre</label><input id="customer-name" placeholder="Nombre para el pedido" style="width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;margin:7px 0 12px"><label for="customer-city">Ciudad o municipio</label><input id="customer-city" placeholder="Ej. Riosucio, Caldas" style="width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;margin:7px 0 12px"><button class="btn" onclick="checkout()">Pedir por WhatsApp</button><p class="smallprint">El envío y el método de pago se confirman por WhatsApp. No compartas datos de tarjetas por chat.</p></div>
+</aside>
+<script>
+const products = [
+ {id:1,name:"Camiseta básica oversize",category:"Hombre",price:69900,desc:"Corte relajado · varios colores",image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80"},
+ {id:2,name:"Buzo urbano",category:"Hombre",price:99900,desc:"Estilo cómodo para todos los días",image:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=700&q=80"},
+ {id:3,name:"Jean clásico",category:"Mujer",price:89900,desc:"Combínalo con tu estilo favorito",image:"https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=700&q=80"},
+ {id:4,name:"Chaqueta urbana",category:"Mujer",price:149900,desc:"Una capa extra para completar el look",image:"https://images.unsplash.com/photo-1548624149-f3a7e4a5f6a5?auto=format&fit=crop&w=700&q=80"},
+ {id:5,name:"Gorra clásica",category:"Accesorios",price:59900,desc:"Un detalle que marca la diferencia",image:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=700&q=80"},
+ {id:6,name:"Tenis urbanos",category:"Accesorios",price:179900,desc:"Estilo casual para combinar",image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80"},
+ {id:7,name:"Top casual",category:"Mujer",price:49900,desc:"Básico versátil para tu outfit",image:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=700&q=80"},
+ {id:8,name:"Camiseta gráfica",category:"Hombre",price:74900,desc:"Un look sencillo con personalidad",image:"https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=700&q=80"}
+];
+const money=n=>n.toLocaleString("es-CO",{style:"currency",currency:"COP",maximumFractionDigits:0});
+let cart={}; let category="Todos";
+function renderProducts(){const list=products.filter(p=>category==="Todos"||p.category===category);document.getElementById("products").innerHTML=list.map(p=>`<article class="product"><img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'"><div class="product-info"><span class="pill">${p.category}</span><h3>${p.name}</h3><div class="desc">${p.desc}</div><div class="price">${money(p.price)}</div><button class="btn" onclick="addToCart(${p.id})">Agregar al carrito</button></div></article>`).join("")}
+function setCategory(c){category=c;document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.cat===c));renderProducts()}
+function addToCart(id){cart[id]=(cart[id]||0)+1;updateCart();openCart()}
+function updateCart(){let count=Object.values(cart).reduce((a,b)=>a+b,0);document.getElementById("cart-count").textContent=count;let entries=Object.entries(cart).filter(([id,q])=>q>0);document.getElementById("cart-items").innerHTML=entries.length?entries.map(([id,q])=>{let p=products.find(x=>x.id===+id);return `<div class="cart-row"><div><b>${p.name}</b><small>${money(p.price)} c/u</small></div><div class="qty"><button onclick="changeQty(${p.id},-1)">−</button><span>${q}</span><button onclick="changeQty(${p.id},1)">+</button></div></div>`}).join(""):'<p>Tu carrito está vacío. Agrega algún producto para comenzar.</p>';let total=entries.reduce((s,[id,q])=>s+products.find(p=>p.id===+id).price*q,0);document.getElementById("cart-total").textContent=money(total)}
+function changeQty(id,n){cart[id]=(cart[id]||0)+n;if(cart[id]<=0)delete cart[id];updateCart()}
+function openCart(){document.getElementById("cart-panel").classList.add("show");document.getElementById("overlay").classList.add("show")}
+function closeCart(){document.getElementById("cart-panel").classList.remove("show");document.getElementById("overlay").classList.remove("show")}
+function checkout(){let entries=Object.entries(cart).filter(([id,q])=>q>0);if(!entries.length){alert("Agrega al menos un producto al carrito.");return}let name=document.getElementById("customer-name").value.trim();let city=document.getElementById("customer-city").value.trim();if(!name||!city){alert("Escribe tu nombre y ciudad o municipio para continuar.");return}const WHATSAPP_NUMBER="57XXXXXXXXXX";let total=0;let lines=entries.map(([id,q])=>{let p=products.find(x=>x.id===+id);total+=p.price*q;return `• ${p.name} x${q} — ${money(p.price*q)}`});let message=`Hola, UrbanStyle. Quiero hacer este pedido:\n\n${lines.join("\n")}\n\nTotal de productos: ${money(total)}\nNombre: ${name}\nCiudad/municipio: ${city}\n\nPor favor confírmenme disponibilidad, envío y opciones de pago.`;if(WHATSAPP_NUMBER.includes("X")){alert("¡El pedido está listo! Para activar WhatsApp, abre el archivo y reemplaza 57XXXXXXXXXX por tu número con indicativo de país, solo números. En Colombia, 57 + tu número.");return}window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,"_blank")}
+document.getElementById("year").textContent=new Date().getFullYear();renderProducts();updateCart();
+</script>
+</body>
+</html>
